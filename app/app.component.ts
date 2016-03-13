@@ -10,20 +10,22 @@ interface Hero {
 		<h1>{{title }}</h1>
 		<h2>My Heroes</h2>
 		<ul class="heroes">
-			<li *ngFor="#hero of heroes">
+			<li [class.selected]="hero === selectedHero" *ngFor="#hero of heroes" (click)="onSelect(hero)">
 				<span class="badge">{{hero.id}}</span> {{hero.name}}
 			</li>
 		</ul>
-		<h2>{{hero.name}} details!</h2>
-		<div><label>Id: </label>{{hero.id}}</div>
-		<div>
-			<label>Name: </label>
-			<div class="inline"><input [(ngModel)]="hero.name" placeholder="name"></div>
+		<div *ngIf="selectedHero">
+			<h2>{{selectedHero.name}} details!</h2>
+			<div><label>Id: </label>{{selectedHero.id}}</div>
+			<div>
+				<label>Name: </label>
+				<div class="inline"><input [(ngModel)]="selectedHero.name" placeholder="name"></div>
+			</div>
 		</div>
 	`,
 	styles: [`
 		.selected {
-			background-color: #CFD8DC !important;
+			background-color: #40BFF8 !important;
 			color: white;
 		}
 		.heroes {
@@ -43,7 +45,7 @@ interface Hero {
 			border-radius: 4px;
 		}
 		.heroes li.selected:hover {
-			background-color: #BBD8DC !important;
+			background-color: #138595 !important;
 			color: white;
 		}
 		.heroes li:hover {
@@ -64,8 +66,8 @@ interface Hero {
 			line-height: 1em;
 			position: relative;
 			left: -1px;
-			top: -4px;
-			height: 1.8em;
+			top: -5px;
+			height: 1.9em;
 			margin-right: .8em;
 			border-radius: 4px 0 0 4px;
 		}
@@ -73,11 +75,9 @@ interface Hero {
 })
 export class AppComponent {
 	public title = 'Tour of Heroes';
-	public hero: Hero = {
-		id: 1,
-		name: 'Windstorm'
-	};
 	public heroes = HEROES;
+	public selectedHero: Hero;
+	onSelect(hero: Hero) { this.selectedHero = hero; }
 }
 var HEROES: Hero[] = [
 	{ "id": 11, "name": "Mr. Nice" },
