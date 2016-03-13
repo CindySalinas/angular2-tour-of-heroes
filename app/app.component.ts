@@ -12,7 +12,7 @@ interface Hero {
 		<div><label>Id: </label>{{hero.id}}</div>
 		<div>
 			<label>Name: </label>
-			<div><input [(ngModel)]="hero.name" placeholder="name"></div>
+			<div class="inline"><input [(ngModel)]="hero.name" placeholder="name"></div>
 		</div>
 	`
 })
