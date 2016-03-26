@@ -8,16 +8,16 @@ body, input[text], button {
   font-family: Cambria, Georgia;
 }
 button {
-  font-family: Arial;
-  background-color: #eee;
+  background-color: rgba(131,204,97,1);
   border: none;
-  padding: 5px 10px;
   border-radius: 4px;
+  color: #fff;
   cursor: pointer;
-  cursor: hand;
+  font-family: Arial;
+  padding: 10px 10px;
 }
 button:hover {
-  background-color: #cfd8dc;
+  background-color: #B2E672;
 }
 button:disabled {
   background-color: #eee;
